@@ -2,6 +2,7 @@ package práctica7.pkg1;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import static práctica7.pkg1.Buffer.BufferReader;
 import static práctica7.pkg1.Char.CharReader;
 import static práctica7.pkg1.Input.InputStream;
 public class Práctica71 {
@@ -27,6 +28,10 @@ public class Práctica71 {
                         break;
                     case 2:
                         CharReader(rutaOrigen, rutaDestino);
+                        bucle = true;
+                        break;
+                    case 3:
+                        BufferReader(rutaOrigen, rutaDestino);
                         bucle = true;
                         break;
                 }
