@@ -19,6 +19,9 @@ public class Buffer {
 
         try (BufferedReader lector = new BufferedReader(new FileReader(entrada));
                 BufferedWriter salida = new BufferedWriter(new FileWriter(destino))) {
+            salida.write(enunciado);
+            salida.newLine();
+            salida.newLine();
             String linealeida = lector.readLine();
             String[] peliculas = linealeida.split("\\{");
             String[][] apartado_peliculas = new String [peliculas.length][elementos.length+1];
