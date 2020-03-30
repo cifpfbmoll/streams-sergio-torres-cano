@@ -15,29 +15,30 @@ public class Buffer {
         String enunciado = "Cartelera de CineFBMoll";
         boolean bucle = false;
         File entrada = new File(origen);
-        int i=0;
+        int i = 0;
 
-        try (BufferedReader lector = new BufferedReader(new FileReader (entrada));
-                BufferedWriter salida = new BufferedWriter(new FileWriter (destino))) {
+        try (BufferedReader lector = new BufferedReader(new FileReader(entrada));
+                BufferedWriter salida = new BufferedWriter(new FileWriter(destino))) {
             String linealeida = lector.readLine();
-            String[] peliculas = linealeida.split("{");
-            String [] apartado_peliculas = null;
-            for (int j=0; j<peliculas.length; j++){
-                apartado_peliculas = peliculas[j].split("#");
+            String[] peliculas = linealeida.split("\\{");
+            String[][] apartado_peliculas = null;
+            for (int j = 0; j < peliculas.length; j++) {
+                apartado_peliculas[j] = peliculas[j].split("#");
             }
             salida.newLine();
-            do {
-                for (int j=0; j<peliculas.length; j++){
-                    salida.write(apartado_peliculas[j]);
-                    salida.newLine();
-                    salida.write(elementos[i]);
-                    if (i<5){
-                        i++;
-                    }
-                    else{i=0;}
+
+            for (int j = 0; j < apartado_peliculas[j].length; j++) {
+                for (int k=0; k < apartado_peliculas[j][k].length(); k++){
+                    salida.write(apartado_peliculas[j][k]);
                 }
-                bucle = true;
-            } while (!bucle);
+                salida.newLine();
+                if (i < 6) {
+                    salida.write(elementos[i]);
+                    i++;
+                } else {
+                    i = 0;
+                }
+            }
             salida.close();
         } catch (IOException exc) {
             System.out.println("Error al introducir la ruta");
