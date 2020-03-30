@@ -13,35 +13,35 @@ public class Buffer {
         int posicion;
         String[] elementos = {"Año: ", "Director: ", "Duración: ", "Sinopsis: ", "Reparto: ", "Sesión: "};
         String enunciado = "Cartelera de CineFBMoll";
-        int i = 0;
+        boolean bucle = false;
         File entrada = new File(origen);
+        int i=0;
+
         try (BufferedReader lector = new BufferedReader(new FileReader (entrada));
                 BufferedWriter salida = new BufferedWriter(new FileWriter (destino))) {
-            salida.write(enunciado);
+            String linealeida = lector.readLine();
+            String[] peliculas = linealeida.split("{");
+            String [] apartado_peliculas = null;
+            for (int j=0; j<peliculas.length; j++){
+                apartado_peliculas = peliculas[j].split("#");
+            }
             salida.newLine();
             do {
-                posicion = lector.read();
-                if (posicion != -1) {
-                    switch (Character.toString((char) posicion)) {
-                        case "#":
-                            salida.newLine();
-                            salida.write(elementos[i]);
-                            i++;
-                            break;
-                        case "{":
-                            salida.newLine();
-                            salida.newLine();
-                            i = 0;
-                            break;
-                        default:
-                            salida.write(posicion);
-                            break;
+                for (int j=0; j<peliculas.length; j++){
+                    salida.write(apartado_peliculas[j]);
+                    salida.newLine();
+                    salida.write(elementos[i]);
+                    if (i<5){
+                        i++;
                     }
+                    else{i=0;}
                 }
-            } while (posicion != -1);
+                bucle = true;
+            } while (!bucle);
             salida.close();
         } catch (IOException exc) {
-
+            System.out.println("Error al introducir la ruta");
+            System.out.println(exc.getMessage());
         }
     }
 }
