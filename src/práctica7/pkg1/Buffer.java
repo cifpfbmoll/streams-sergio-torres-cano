@@ -26,19 +26,18 @@ public class Buffer {
                 apartado_peliculas[j] = peliculas[j].split("#");
             }
 
-            for (int j = 0; j < apartado_peliculas.length; j++) {
-                for (int k=0; k < apartado_peliculas[0].length; k++){
-                    salida.write(apartado_peliculas[j][k]);
+            for (String[] apartado_pelicula : apartado_peliculas) {
+                for (int k = 0; k < apartado_peliculas[0].length; k++) {
+                    salida.write(apartado_pelicula[k]);
                     salida.newLine();
                     if (i < 6) {
-                    salida.write(elementos[i]);
-                    i++;
-                } else {
-                    i = 0;
-                }
+                        salida.write(elementos[i]);
+                        i++;
+                    } else {
+                        i = 0;
+                    }
                 }
                 salida.newLine();
-                
             }
             salida.close();
         } catch (IOException exc) {
