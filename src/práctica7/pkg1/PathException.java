@@ -17,16 +17,16 @@ public final class PathException extends Exception {
     public PathException() {
     }
 
-    public PathException(String message, int errorCode) {
+    public PathException(String message, int error) {
         this.message = message;
-        this.error = errorCode;
+        this.error = error;
     }
 
     public PathException(int errorCode) {
         if (error == 123) {
-            this.setMessage("Not a valid origin file route.");
+            this.setMessage("No es una ruta valida");
         } else if (error == 321) {
-            this.setMessage("File route not found.");
+            this.setMessage("Ruta del archivo no encontrado.");
         }
     }
 
