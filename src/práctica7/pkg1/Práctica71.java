@@ -1,5 +1,6 @@
 package práctica7.pkg1;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import static práctica7.pkg1.Buffer.BufferReader;
@@ -9,7 +10,7 @@ public class Práctica71 {
 
     static Scanner lector = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PathException, IOException {
         boolean bucle = false;
         System.out.println("Introduzca ruta origen.");
         String rutaOrigen = lector.nextLine();

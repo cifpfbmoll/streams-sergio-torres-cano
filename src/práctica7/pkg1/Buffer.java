@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Buffer {
 
-    public static void BufferReader(String origen, String destino) {
+    public static void BufferReader(String origen, String destino) throws PathException, IOException {
         int posicion;
         String[] elementos = {"Año: ", "Director: ", "Duración: ", "Sinopsis: ", "Reparto: ", "Sesión: "};
         String enunciado = "Cartelera de CineFBMoll";
@@ -43,9 +43,6 @@ public class Buffer {
                 salida.newLine();
             }
             salida.close();
-        } catch (IOException exc) {
-            System.out.println("Error al introducir la ruta");
-            System.out.println(exc.getMessage());
         }
     }
 }

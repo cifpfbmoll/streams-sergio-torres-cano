@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Char {
 
-    public static void CharReader(String origen, String destino) {
+    public static void CharReader(String origen, String destino) throws PathException, IOException {
         int posicion;
         String[] elementos = {"Año: ", "Director: ", "Duración: ", "Sinopsis: ", "Reparto: ", "Sesión: "};
         String enunciado = "Cartelera de CineFBMoll";
@@ -44,8 +44,6 @@ public class Char {
                 }
             } while (posicion != -1);
             salida.close();
-        } catch (IOException exc) {
-
-        }
+        } 
     }
 }

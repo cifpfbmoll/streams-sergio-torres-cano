@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Input {
     
-    public static void InputStream(String origen,String destino){
+    public static void InputStream(String origen,String destino) throws PathException, IOException {
         int posicion;
         String [] elementos = {"Año: ","Director: ","Duración: ","Sinopsis: ","Reparto: ","Sesión: "};
         String enunciado = "Cartelera de CineFBMoll";
@@ -41,8 +41,5 @@ public class Input {
             } while (posicion != -1);
             salida.close();
         } 
-        catch (IOException exc){
-            
-        }
     }
 }
