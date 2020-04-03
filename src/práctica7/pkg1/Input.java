@@ -48,6 +48,7 @@ public class Input {
             throw new PathException(fe.getMessage(), Arrays.toString(fe.getStackTrace()));
         } catch (IOException ie){
             System.out.println("Error al leer el archivo.");
+            throw new PathException(ie.getMessage(), Arrays.toString(ie.getStackTrace()));
             
         }
     }
