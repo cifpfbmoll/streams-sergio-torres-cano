@@ -1,8 +1,11 @@
 package práctica7.pkg1;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+
 
 public class Input {
 
@@ -12,8 +15,9 @@ public class Input {
         String enunciado = "Cartelera de CineFBMoll";
         int i = 0;
         byte[] enunciado_escrito = enunciado.getBytes();
-        FileInputStream entrada = new FileInputStream(origen);
-        FileOutputStream salida = new FileOutputStream(destino);
+        try(FileInputStream entrada = new FileInputStream(origen);
+        FileOutputStream salida = new FileOutputStream(destino)){
+            
         salida.write(enunciado_escrito);
         salida.write((char) 10);
         do {
@@ -40,5 +44,11 @@ public class Input {
             }
         } while (posicion != -1);
         salida.close();
+        } catch (FileNotFoundException fe){
+            throw new PathException(fe.getMessage(), Arrays.toString(fe.getStackTrace()));
+        } catch (IOException ie){
+            System.out.println("Error al leer el archivo.");
+            
+        }
     }
 }

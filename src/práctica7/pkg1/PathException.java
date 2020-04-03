@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,8 +17,9 @@ public final class PathException extends Exception {
     }
 
     public PathException(String mensaje, String traza) {
-        this.mensaje = getMessage();
-        this.traza = Arrays.toString(getStackTrace());
+        this.mensaje = mensaje;
+        this.traza = traza;
+        Error(mensaje, traza);
     }
 
     public String getMensaje() {
@@ -39,7 +39,7 @@ public final class PathException extends Exception {
     }
 
     
-    public static void PathException(String mensaje, String traza) {
+    public static void Error(String mensaje, String traza) {
         try (BufferedWriter writerMejorado = new BufferedWriter(new FileWriter("errores.txt", true))) {
 
             Date fecha = Calendar.getInstance().getTime();
@@ -49,7 +49,7 @@ public final class PathException extends Exception {
             writerMejorado.write(fechahoraString);
             writerMejorado.write(": " + mensaje);
             writerMejorado.write("\n" + traza + "\n\n");
-        } catch (IOException eio) {
+        } catch (IOException ja) {
             System.out.println("Error al leer el archivo.");
         }
 
