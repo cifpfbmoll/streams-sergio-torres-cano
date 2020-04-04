@@ -1,6 +1,7 @@
 package práctica7.pkg1;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -12,7 +13,7 @@ public class Práctica71 {
 
     static Scanner lector = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PathException {
         boolean bucle = false;
         System.out.println("Introduzca ruta origen.");
         String rutaOrigen = lector.nextLine();
@@ -41,11 +42,11 @@ public class Práctica71 {
             } catch (InputMismatchException e) {
                 System.out.println("Inserte una opción correcta.");
                 lector.next();
-            } catch (PathException ex) {
-                Logger.getLogger(Práctica71.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Práctica71.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (PathException | IOException | NumberFormatException pe) {
+                throw new PathException(pe.getMessage(), Arrays.toString(pe.getStackTrace()));
             }
+                
+        
 
         }
         
