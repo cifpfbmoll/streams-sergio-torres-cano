@@ -38,6 +38,28 @@ public class Práctica71 {
                         BufferReader(rutaOrigen, rutaDestino);
                         bucle = true;
                         break;
+                    case 4:
+                        boolean salir = false;
+                        System.out.println("1-Lectura línea a línea y escritura con objetos. ");
+                        System.out.println("2-Lectura de objetos y escritura de objetos.");
+                        System.out.println("3-Lectura de objetos y escritura por consola.");
+                        System.out.println("4-Lectura por consola y escritura de objetos.");
+                        System.out.println("5-Volver al menú principal.");
+                        while (!salir){
+                            switch (Integer.parseInt(lector.nextLine())){
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    salir = true;
+                                    break;
+                            }
+                        }
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Inserte una opción correcta.");
