@@ -1,14 +1,14 @@
 package práctica7.pkg1;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static práctica7.pkg1.Buffer.BufferReader;
 import static práctica7.pkg1.Char.CharReader;
 import static práctica7.pkg1.Input.InputStream;
+
 public class Práctica71 {
 
     static Scanner lector = new Scanner(System.in);
@@ -42,13 +42,15 @@ public class Práctica71 {
             } catch (InputMismatchException e) {
                 System.out.println("Inserte una opción correcta.");
                 lector.next();
-            } catch (PathException | IOException | NumberFormatException pe) {
-                throw new PathException(pe.getMessage(), Arrays.toString(pe.getStackTrace()));
+            } catch (NumberFormatException pe) {
+                throw new PathException(pe + "Error en el archivo", Arrays.toString(pe.getStackTrace()));
+            } catch (FileNotFoundException fe) {
+                throw new PathException(fe + "No se ha introducido la ruta", Arrays.toString(fe.getStackTrace()));
+            } catch (IOException ie) {
+                System.out.println("Error al leer el archivo.");
+                throw new PathException(ie.getMessage(), Arrays.toString(ie.getStackTrace()));
             }
-                
-        
-
         }
-        
+
     }
 }

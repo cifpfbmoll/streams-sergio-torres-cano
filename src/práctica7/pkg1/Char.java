@@ -7,10 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-
 public class Char {
 
-    public static void CharReader(String origen, String destino) throws PathException {
+    public static void CharReader(String origen, String destino) throws FileNotFoundException, IOException {
         int posicion;
         String[] elementos = {"Año: ", "Director: ", "Duración: ", "Sinopsis: ", "Reparto: ", "Sesión: "};
         String enunciado = "Cartelera de CineFBMoll";
@@ -48,12 +47,6 @@ public class Char {
                 }
             } while (posicion != -1);
             salida.close();
-        } catch (FileNotFoundException fe) {
-            throw new PathException(fe.getMessage(), Arrays.toString(fe.getStackTrace()));
-        } catch (IOException ie) {
-            System.out.println("Error al leer el archivo.");
-            throw new PathException(ie.getMessage(), Arrays.toString(ie.getStackTrace()));
-            
         }
     }
 }

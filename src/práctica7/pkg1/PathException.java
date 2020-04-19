@@ -38,7 +38,6 @@ public final class PathException extends Exception {
         this.traza = traza;
     }
 
-    
     public static void Error(String mensaje, String traza) {
         try (BufferedWriter writerMejorado = new BufferedWriter(new FileWriter("errores.txt", true))) {
 
@@ -52,6 +51,5 @@ public final class PathException extends Exception {
         } catch (IOException ja) {
             System.out.println("Error al leer el archivo.");
         }
-
     }
 }
