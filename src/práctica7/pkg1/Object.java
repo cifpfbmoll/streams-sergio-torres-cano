@@ -18,7 +18,7 @@ import java.io.ObjectOutputStream;
  * @author Sergio
  */
 public class Object {
-    public static void leerObjEscribirObj(String origen, String destino) throws PathException, FileNotFoundException, IOException {
+    public static void leerObjEscribirObj(String origen, String destino) throws PathException, FileNotFoundException{
         try (ObjectInputStream objectEntrada = new ObjectInputStream(new FileInputStream(origen));
                 ObjectOutputStream objectSalida = new ObjectOutputStream(new FileOutputStream(destino))) {
             boolean eof = false;
